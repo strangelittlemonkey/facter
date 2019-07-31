@@ -121,8 +121,8 @@ namespace facter { namespace facts { namespace linux {
 
     string virtualization_resolver::get_gce_vm(collection& facts)
     {
-        auto vendor = facts.get<string_value>(fact::bios_vendor);
-        if (vendor && vendor->value().find("Google") != string::npos) {
+        auto product_name = facts.get<string_value>(fact::product_name);
+        if (product_name && product_name->value().find("Google Compute Engine") != string::npos) {
             return vm::gce;
         }
         return {};
